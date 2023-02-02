@@ -31,7 +31,7 @@
    [`NVIDIA SDK Manager`](https://developer.NVIDIA.com/NVIDIA-sdk-manager) `.deb` tool
 2. Install the
    [`NVIDIA SDK Manager`](https://developer.NVIDIA.com/NVIDIA-sdk-manager) `.deb` tool on
-   the computer running [`Ubuntu 18.04 x64`](https://releases.ubuntu.com/18.04/)
+   the computer running the *Desktop Image* of [`Ubuntu 18.04 x64`](https://releases.ubuntu.com/18.04/)
 
 ### Setup the Device
 
