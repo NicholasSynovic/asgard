@@ -17,7 +17,7 @@
 
 ### Requirements
 
--   A computer running [`Ubuntu 18.04 x64`](https://releases.ubuntu.com/18.04/)
+-   A computer running the *Desktop Image* of [`Ubuntu 18.04 x64`](https://releases.ubuntu.com/18.04/)
 -   The [`NVIDIA SDK Manager`](https://developer.NVIDIA.com/NVIDIA-sdk-manager) tool
 -   A pin jumper
 -   Micro SD Card (32 GB or larger; preferably 128 GB)
