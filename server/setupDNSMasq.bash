@@ -7,23 +7,23 @@
 # Network interface to use for subnet; found by running ifconfig
 
 # interface=$1
-subnet="192.168.102"
+# subnet="192.168.102"
 # routerIP="1"
 # dnsserver="1"
 # nameserver="1.1.1.1"
 
-sudo apt remove dnsmasq dnsutils ldnsutils --purge -y
+# sudo apt remove dnsmasq dnsutils ldnsutils --purge -y
 
-sudo apt update
-sudo apt upgrade -y
-sudo apt autoremove --purge -y
+# sudo apt update
+# sudo apt upgrade -y
+# sudo apt autoremove --purge -y
 
-sudo apt-get install dnsmasq dnsutils ldnsutils -y
+# sudo apt-get install dnsmasq dnsutils ldnsutils -y
 
 # Configure dnsmasq
-sudo cp /etc/resolv.conf /etc/resolv.conf.backup
-sudo cp /etc/host.conf /etc/host.conf.backup
-sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.backup
+# sudo cp /etc/resolv.conf /etc/resolv.conf.backup
+# sudo cp /etc/host.conf /etc/host.conf.backup
+# sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.backup
 
 # echo "nameserver ${nameserver}" | sudo tee /etc/resolv.conf
 
@@ -43,7 +43,7 @@ sudo cp /etc/dnsmasq.conf /etc/dnsmasq.conf.backup
 # log-dhcp""" | sudo tee /etc/dnsmasq.conf
 
 # Allow any connection through UFW on subnet
-sudo ufw allow from "${subnet}.0/24" 
+sudo ufw allow from "192.168.102.0/24"
 
 sudo systemctl disable --now systemd-resolved
 
