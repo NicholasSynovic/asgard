@@ -11,3 +11,7 @@ sudo apt install software-properties-common -y
 sudo apt install ansible -y
 
 ansible-galaxy collection install community.general
+
+sudo ansible-playbook -i inventory.ini playbook.yaml
+
+./setupNFS_client.bash
