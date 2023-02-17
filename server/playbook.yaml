@@ -77,3 +77,30 @@
         src: /etc/dnsmasq.conf
         dest: /etc/dnsmasq.conf.backup
         backup: yes
+
+    #NEW as of 2/17
+    
+    - name: "UFW subnet connection"
+      ufw:
+        rule: allow
+        src: 192.168.102.0/24
+
+    - name: "Disable systemd-resolved"
+      ansible.builtin.systemd:
+        name: systemd-resolved
+        enabled: no
+
+    - name: "Restart dnsmasq"
+      ansible.builtin.systemd:
+        name: dnsmasq
+        state: restarted
+    
+    - name: "Check dnsmasq status"
+      service_facts:
+
+    #if first statement doesn't work switch commented out line
+
+    - debug: 
+        var: ansible_facts.services['dnsmasq'][status]
+        #var: ansible_facts.services['dnsmasq']
+
