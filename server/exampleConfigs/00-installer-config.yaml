@@ -1,0 +1,14 @@
+# This is the network config written by 'subiquity'
+network:
+  renderer: networkd
+  version: 2
+  ethernets:
+    eno1:
+      addresses:
+        - 147.126.27.20/24
+      routes:
+        - to: default
+          via: 147.126.27.1
+      nameservers:
+        addresses:
+          - 8.8.8.8
