@@ -75,7 +75,9 @@
         var: serverinfo.stdout
 
     - name: "NFS server connect at mount points"
-      ansible.builtin.shell: tee -a "${serverIP}:${serverFolderPath} ${clientFolderPath} nfs auto 0 0" /etc/fstab
+        shell: /bin/bash
+        executable: "tee -a \"${serverIP}:${serverFolderPath} ${clientFolderPath} nfs auto 0 0\" /etc/fstab"
 
     - name: "NFS mount"
-      ansible.builtin.shell: sudo mount -a
+        shell: /bin/bash
+        executable: "sudo mount -a"
