@@ -79,9 +79,11 @@
         var: serverinfo.stdout
 
     - name: "NFS server connect at mount points"
-        shell: /bin/bash
-        executable: "tee -a \"${serverIP}:${serverFolderPath} ${clientFolderPath} nfs auto 0 0\" /etc/fstab"
+      shell:
+        executable: /bin/bash
+        cmd: "tee -a \"${serverIP}:${serverFolderPath}  ${clientFolderPath}     nfs     auto    0 0\" /etc/fstab"
 
     - name: "NFS mount"
-        shell: /bin/bash
-        executable: "sudo mount -a"
+      shell: 
+        executable: /bin/bash
+        cmd: "sudo mount -a"
