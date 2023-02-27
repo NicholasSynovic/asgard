@@ -1,9 +1,11 @@
-- name: "Create NFS Mount points"
+- name: "Create nfs mount point"
   file:
     path: /mnt/asgard
     state: directory
     mode: "777"
     group: nobody:nogroup
+
+- name: "Remove ownership of nfs mount point"
   shell:
     executable: /bin/bash
     cmd: "sudo chown nobody:nogroup /mnt/asgard"
