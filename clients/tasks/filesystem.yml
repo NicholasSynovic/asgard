@@ -4,12 +4,12 @@
     state: directory
 
 - name: "Set fstab configuration"
-  file:
+  mount:
     backup: true
     boot: true
     fstype: nfs
     path: /mnt/asgard_client
     src: 192.168.102.1:/mnt/asgard
-    dump: "0"
+    dump: 0
     opts: auto
     state: present
