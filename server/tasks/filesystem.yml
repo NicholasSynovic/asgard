@@ -3,3 +3,4 @@
     path: /mnt/asgard
     state: directory
     mode: "777"
+    group: nobody:nogroup
