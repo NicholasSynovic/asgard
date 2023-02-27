@@ -1,0 +1,11 @@
+---
+  - name: "Configure Asgard client node"
+    hosts: [localhost]
+    connection: local
+    become: yes
+
+    tasks:
+      - import_tasks: tasks/update.yml
+      - import_tasks: tasks/install.yml
+      - import_tasks: tasks/services.yml
+      - import_tasks: tasks/filesystem.yml

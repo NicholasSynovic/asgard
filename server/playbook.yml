@@ -1,0 +1,12 @@
+---
+  - name: "Configure Asgard head node"
+    hosts: [localhost]
+    connection: local
+    become: yes
+
+    tasks:
+      - import_tasks: tasks/filesystem.yml
+      - import_tasks: tasks/update.yml
+      - import_tasks: tasks/install.yml
+      - import_tasks: tasks/replaceConfigs.yml
+      - import_tasks: tasks/services.yml

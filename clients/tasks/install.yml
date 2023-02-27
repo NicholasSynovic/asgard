@@ -1,0 +1,14 @@
+- name: Install utilities
+  apt:
+    name: "{{ utilityPackages }}"
+    state: latest
+
+- name: Install avahi
+  apt:
+    name: "{{ avahiPackages }}"
+    state: latest
+
+- name: Install nfs
+  apt:
+    name: "{{ nfsPackages }}"
+    state: latest
