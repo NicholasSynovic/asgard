@@ -1,3 +1,10 @@
+- name: "Set ufw outside connection"
+  ufw:
+    rule: limit
+    proto: tcp
+    port: ssh
+    state: reloaded
+
 - name: "Set ufw subnet connection"
   ufw:
     from_ip: 192.168.102.0/24
