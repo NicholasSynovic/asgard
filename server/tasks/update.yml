@@ -17,8 +17,3 @@
     upgrade: dist
     autoremove: true
     purge: true
-
-- name: "Update APT Cache"
-  apt:
-    update_cache: yes
-    autoclean: true
