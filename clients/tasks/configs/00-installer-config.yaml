@@ -1,0 +1,20 @@
+network:
+  renderer: networkd
+  version: 2
+  ethernets:
+    eno1:
+      addresses:
+        - 147.126.27.20/24
+      routes:
+        - to: default
+          via: 147.126.27.1
+      nameservers:
+        addresses:
+          - 8.8.8.8
+          - 8.8.4.4
+          - 1.1.1.1
+          - 1.0.0.1
+    enx70886b88a0a2:
+      dhcp4: true
+      addresses:
+        - 192.168.102.1/24

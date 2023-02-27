@@ -1,0 +1,41 @@
+- name: "Replace netplan"
+  copy:
+    src: configs/00-installer-config.yaml
+    dest: /etc/netplan/00-installer-config.yaml
+    backup: yes
+
+- name: "Replace ssh config [1]"
+  copy:
+    src: configs/ssh_config
+    dest: /etc/ssh_config
+    backup: yes
+
+- name: "Replace ssh config [1]"
+  copy:
+    src: configs/sshd_config
+    dest: /etc/sshd_config
+    backup: yes
+
+- name: "Replace dnsmasq configuration files [0]"
+  copy:
+    src: configs/resolv.conf
+    dest: /etc/resolv.conf
+    backup: yes
+
+- name: "Replace dnsmasq configuration files [1]"
+  copy:
+    src: configs/host.conf
+    dest: /etc/host.conf
+    backup: yes
+
+- name: "Replace dnsmasq configuration files [2]"
+  copy:
+    src: configs/dnsmasq.conf
+    dest: /etc/dnsmasq.conf
+    backup: yes
+
+- name: "Replace nfs configuration files [2]"
+  copy:
+    src: configs/exports
+    dest: /etc/exports
+    backup: yes

@@ -1,0 +1,7 @@
+- name: "Create nfs mounting directories"
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - /mnt/asgard
+    - /mnt/asgard_client
