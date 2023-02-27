@@ -17,8 +17,8 @@
 
 ### Requirements
 
--   A computer running [`Ubuntu 18.04 x64`](https://releases.ubuntu.com/18.04/)
--   The [`NVIDIA SDK Manager`](https://developer.NVIDIA.com/NVIDIA-sdk-manager) tool
+-   A computer running the *Desktop Image* of [`Ubuntu 18.04 x64`](https://releases.ubuntu.com/18.04/)
+-   The [`NVIDIA SDK Manager`](https://developer.NVIDIA.com/NVIDIA-sdk-manager) `.deb` tool  
 -   A pin jumper
 -   Micro SD Card (32 GB or larger; preferably 128 GB)
 -   Micro USB cable
@@ -28,10 +28,10 @@
 ### Setup the Software
 
 1. Download the
-   [`NVIDIA SDK Manager`](https://developer.NVIDIA.com/NVIDIA-sdk-manager) tool
+   [`NVIDIA SDK Manager`](https://developer.NVIDIA.com/NVIDIA-sdk-manager) `.deb` tool
 2. Install the
-   [`NVIDIA SDK Manager`](https://developer.NVIDIA.com/NVIDIA-sdk-manager) tool on
-   the computer running [`Ubuntu 18.04 x64`](https://releases.ubuntu.com/18.04/)
+   [`NVIDIA SDK Manager`](https://developer.NVIDIA.com/NVIDIA-sdk-manager) `.deb` tool on
+   the computer running the *Desktop Image* of [`Ubuntu 18.04 x64`](https://releases.ubuntu.com/18.04/)
 
 ### Setup the Device
 

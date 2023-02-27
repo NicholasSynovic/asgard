@@ -64,3 +64,26 @@
       service:
         name: avahi-daemon
         state: started
+
+    #NEW as of 2/17
+    #confused on if this has already been implemented at the top of the file
+
+    - name: "NFS client env variable setup"
+      environment:
+        serverIP: $1
+        serverFolderPath: /mnt/asgard
+        clientFolderPath: /mnt/asgard_client
+      register: serverinfo
+
+    - debug:
+        var: serverinfo.stdout
+
+    - name: "NFS server connect at mount points"
+      shell:
+        executable: /bin/bash
+        cmd: "tee -a \"${serverIP}:${serverFolderPath}  ${clientFolderPath}     nfs     auto    0 0\" /etc/fstab"
+
+    - name: "NFS mount"
+      shell: 
+        executable: /bin/bash
+        cmd: "sudo mount -a"
