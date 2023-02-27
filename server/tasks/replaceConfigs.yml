@@ -1,0 +1,7 @@
+- name: "Replace netplan"
+  copy:
+    src: ./config/00-installer-config.yaml
+    dest: /etc/netplan/00-installer-config.yaml
+    backup: yes
+
+- name:

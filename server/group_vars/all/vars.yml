@@ -1,0 +1,20 @@
+utilityPackages:
+  - unzip
+  - curl
+  - zip
+  - software-properties-common
+  - build-essential
+  - procps
+  - file
+  - git
+
+avahiPackages:
+  - avahi-daemon
+
+nfsPackages:
+  - nfs-kernel-server
+
+dnsmasqPackages:
+  - dnsmasq
+  - dnsutils
+  - ldnsutils

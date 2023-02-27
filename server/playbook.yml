@@ -11,75 +11,75 @@
       loop:
         - /mnt/asgard
 
-    - name: "Update APT Cache"
-      apt:
-        update_cache: yes
-        autoclean: true
+    # - name: "Update APT Cache"
+    #   apt:
+    #     update_cache: yes
+    #     autoclean: true
 
-    - name: "Upgrade Packages"
-      apt:
-        upgrade: safe
-        autoremove: true
-        purge: true
+    # - name: "Upgrade Packages"
+    #   apt:
+    #     upgrade: safe
+    #     autoremove: true
+    #     purge: true
 
-    - name: "Upgrade System Packages"
-      apt:
-        upgrade: full
-        autoremove: true
-        purge: true
+    # - name: "Upgrade System Packages"
+    #   apt:
+    #     upgrade: full
+    #     autoremove: true
+    #     purge: true
 
-    - name: "Upgrade Distribution"
-      apt:
-        upgrade: dist
-        autoremove: true
-        purge: true
+    # - name: "Upgrade Distribution"
+    #   apt:
+    #     upgrade: dist
+    #     autoremove: true
+    #     purge: true
 
-    - name: "Update APT Cache"
-      apt:
-        update_cache: yes
-        autoclean: true
+    # - name: "Update APT Cache"
+    #   apt:
+    #     update_cache: yes
+    #     autoclean: true
 
-    - name: "Install Utilities"
-      apt:
-        name: ["unzip", "curl", "zip", "software-properties-common", "build-essential", "procps", "file", "git"]
+    # - name: "Install Utilities"
+    #   apt:
+    #     name: ["unzip", "curl", "zip", "software-properties-common", "build-essential", "procps", "file", "git"]
 
-    - name: "Install avahi"
-      apt:
-        name: ["avahi-daemon"]
+    # - name: "Install avahi"
+    #   apt:
+    #     name: ["avahi-daemon"]
 
-    - name: "Install NFS"
-      apt:
-        name: ["nfs-kernel-server"]
+    # - name: "Install NFS"
+    #   apt:
+    #     name: ["nfs-kernel-server"]
 
-    - name: "Install dnsmasq"
-      apt:
-        name: ["dnsmasq", "dnsutils", "ldnsutils"]
+    # - name: "Install dnsmasq"
+    #   apt:
+    #     name: ["dnsmasq", "dnsutils", "ldnsutils"]
 
     - name: "Enable avahi-daemon"
       service:
         name: avahi-daemon
         state: started
 
-    - name: "Backup dnsmasq configuration files [0]"
-      copy:
-        src: /etc/resolv.conf
-        dest: /etc/resolv.conf.backup
-        backup: yes
+    # - name: "Backup dnsmasq configuration files [0]"
+    #   copy:
+    #     src: /etc/resolv.conf
+    #     dest: /etc/resolv.conf.backup
+    #     backup: yes
 
-    - name: "Backup dnsmasq configuration files [1]"
-      copy:
-        src: /etc/host.conf
-        dest: /etc/host.conf.backup
-        backup: yes
+    # - name: "Backup dnsmasq configuration files [1]"
+    #   copy:
+    #     src: /etc/host.conf
+    #     dest: /etc/host.conf.backup
+    #     backup: yes
 
-    - name: "Backup dnsmasq configuration files [2]"
-      copy:
-        src: /etc/dnsmasq.conf
-        dest: /etc/dnsmasq.conf.backup
-        backup: yes
+    # - name: "Backup dnsmasq configuration files [2]"
+    #   copy:
+    #     src: /etc/dnsmasq.conf
+    #     dest: /etc/dnsmasq.conf.backup
+    #     backup: yes
 
     #NEW as of 2/17
-    
+
     - name: "UFW subnet connection"
       ufw:
         rule: allow
@@ -94,13 +94,13 @@
       ansible.builtin.systemd:
         name: dnsmasq
         state: restarted
-    
+
     - name: "Check dnsmasq status"
       service_facts:
 
     #if first statement doesn't work switch commented out line
 
-    - debug: 
+    - debug:
         var: ansible_facts.services['dnsmasq'][status]
         #var: ansible_facts.services['dnsmasq']
 
@@ -146,12 +146,12 @@
 
     #if first statement doesn't work switch commented out line
     #if both dnsmasq and nfs-kernel-server cannot check status rewrite ansible command to perform systemctl restart and status in shell
- 
+
     - debug:
         var: ansible_facts.services['nfs-kernel-server'][status]
         #var: ansible_facts.services['nfs-kernel-server']
-        
-       
+
+
     - name: "Display all exported file systems"
       shell:
         executable: /bin/bash

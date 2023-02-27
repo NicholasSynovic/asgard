@@ -1,0 +1,27 @@
+- name: "Update APT Cache"
+  apt:
+    update_cache: yes
+    autoclean: true
+
+- name: "Upgrade Packages"
+  apt:
+    upgrade: safe
+    autoremove: true
+    purge: true
+
+- name: "Upgrade System Packages"
+  apt:
+    upgrade: full
+    autoremove: true
+    purge: true
+
+- name: "Upgrade Distribution"
+  apt:
+    upgrade: dist
+    autoremove: true
+    purge: true
+
+- name: "Update APT Cache"
+  apt:
+    update_cache: yes
+    autoclean: true

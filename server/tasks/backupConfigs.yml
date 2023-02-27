@@ -1,0 +1,29 @@
+- name: "Backup dnsmasq configuration files [0]"
+  copy:
+    src: /etc/resolv.conf
+    dest: /etc/resolv.conf.backup
+    backup: yes
+
+- name: "Backup dnsmasq configuration files [1]"
+  copy:
+    src: /etc/host.conf
+    dest: /etc/host.conf.backup
+    backup: yes
+
+- name: "Backup dnsmasq configuration files [2]"
+  copy:
+    src: /etc/dnsmasq.conf
+    dest: /etc/dnsmasq.conf.backup
+    backup: yes
+
+- name: "Backup ssh config file"
+  copy:
+    src: /etc/dnsmasq.conf
+    dest: /etc/dnsmasq.conf.backup
+    backup: yes
+
+- name: "Backup netplan config file"
+  copy:
+    src: /etc/netplan/00-installer-config.yaml
+    dest: /etc/netplan/00-installer-config.yaml.backup
+    backup: yes
