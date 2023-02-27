@@ -4,12 +4,12 @@
     connection: local
 
     tasks:
-    - name: "Create NFS Mount points"
-      file:
-        path: "{{ item }}"
-        state: directory
-      loop:
-        - /mnt/asgard
+    # - name: "Create NFS Mount points"
+    #   file:
+    #     path: "{{ item }}"
+    #     state: directory
+    #   loop:
+    #     - /mnt/asgard
 
     # - name: "Update APT Cache"
     #   apt:
@@ -80,79 +80,79 @@
 
     #NEW as of 2/17
 
-    - name: "UFW subnet connection"
-      ufw:
-        rule: allow
-        src: 192.168.102.0/24
+    # - name: "UFW subnet connection"
+    #   ufw:
+    #     rule: allow
+    #     src: 192.168.102.0/24
 
-    - name: "Disable systemd-resolved"
-      ansible.builtin.systemd:
-        name: systemd-resolved
-        enabled: no
+    # - name: "Disable systemd-resolved"
+    #   ansible.builtin.systemd:
+    #     name: systemd-resolved
+    #     enabled: no
 
-    - name: "Restart dnsmasq"
-      ansible.builtin.systemd:
-        name: dnsmasq
-        state: restarted
+    # - name: "Restart dnsmasq"
+    #   ansible.builtin.systemd:
+    #     name: dnsmasq
+    #     state: restarted
 
-    - name: "Check dnsmasq status"
-      service_facts:
+    # - name: "Check dnsmasq status"
+    #   service_facts:
 
     #if first statement doesn't work switch commented out line
 
-    - debug:
-        var: ansible_facts.services['dnsmasq'][status]
+    # - debug:
+    #     var: ansible_facts.services['dnsmasq'][status]
         #var: ansible_facts.services['dnsmasq']
 
     #NEW as of 2/23
 
-    - name: "Setup shared folder"
-      shell:
-        executable: /bin/bash
-        cmd: "sudo rm -r /mnt/asgard"
+    # - name: "Setup shared folder"
+    #   shell:
+    #     executable: /bin/bash
+    #     cmd: "sudo rm -r /mnt/asgard"
 
-    - name: "Setup shared folder"
-      shell:
-        executable: /bin/bash
-        cmd: "sudo mkdir /mnt/asgard"
+    # - name: "Setup shared folder"
+    #   shell:
+    #     executable: /bin/bash
+    #     cmd: "sudo mkdir /mnt/asgard"
 
-    - name: "Setup shared folder"
-      shell:
-        executable: /bin/bash
-        cmd: "sudo chown nobody:nogroup /mnt/asgard"
+    # - name: "Setup shared folder"
+    #   shell:
+    #     executable: /bin/bash
+    #     cmd: "sudo chown nobody:nogroup /mnt/asgard"
 
-    - name: "Setup shared folder"
-      shell:
-        executable: /bin/bash
-        cmd: "sudo chmod 777 /mnt/asgard"
+    # - name: "Setup shared folder"
+    #   shell:
+    #     executable: /bin/bash
+    #     cmd: "sudo chmod 777 /mnt/asgard"
 
-    - name: "Expose shared folder to the subnet"
-      shell:
-        executable: /bin/bash
-        cmd: "sudo cp /etc/exports /etc/exports.backupd"
+    # - name: "Expose shared folder to the subnet"
+    #   shell:
+    #     executable: /bin/bash
+    #     cmd: "sudo cp /etc/exports /etc/exports.backupd"
 
-    - name: "Expose shared folder to the subnet"
-      shell:
-        executable: /bin/bash
-        cmd: "echo \"/mnt/asgard 192.168.102.0/24(rw,sync,no_subtree_check)\" | sudo tee /etc/exports"
+    # - name: "Expose shared folder to the subnet"
+    #   shell:
+    #     executable: /bin/bash
+    #     cmd: "echo \"/mnt/asgard 192.168.102.0/24(rw,sync,no_subtree_check)\" | sudo tee /etc/exports"
 
     - name: "Restart nfs-kernel-server"
       ansible.builtin.systemd:
         name: nfs-kernel-server
         state: restarted
 
-    - name: "Check nfs-kernel-server status"
-      service_facts:
+    # - name: "Check nfs-kernel-server status"
+    #   service_facts:
 
     #if first statement doesn't work switch commented out line
     #if both dnsmasq and nfs-kernel-server cannot check status rewrite ansible command to perform systemctl restart and status in shell
 
-    - debug:
-        var: ansible_facts.services['nfs-kernel-server'][status]
-        #var: ansible_facts.services['nfs-kernel-server']
+    # - debug:
+    #     var: ansible_facts.services['nfs-kernel-server'][status]
+    #     #var: ansible_facts.services['nfs-kernel-server']
 
 
-    - name: "Display all exported file systems"
-      shell:
-        executable: /bin/bash
-        cmd: "sudo exportfs -a"
+    # - name: "Display all exported file systems"
+    #   shell:
+    #     executable: /bin/bash
+    #     cmd: "sudo exportfs -a"

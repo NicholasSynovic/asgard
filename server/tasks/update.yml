@@ -1,10 +1,7 @@
-- name: "Update APT Cache"
+- name: "Upgrade Packages"
   apt:
     update_cache: yes
     autoclean: true
-
-- name: "Upgrade Packages"
-  apt:
     upgrade: safe
     autoremove: true
     purge: true

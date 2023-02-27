@@ -1,0 +1,5 @@
+- name: "Create NFS Mount points"
+  file:
+    path: /mnt/asgard
+    state: directory
+    mode: "777"
