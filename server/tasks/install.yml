@@ -5,7 +5,7 @@
 
 - name: Install avahi
   apt:
-    name: " {{ avahiPackages }}"
+    name: "{{ avahiPackages }}"
     state: latest
 
 - name: Install nfs
@@ -15,5 +15,5 @@
 
 - name: Install dnsmasq
   apt:
-    name: " {{ dnsmasqPackages }}"
+    name: "{{ dnsmasqPackages }}"
     state: latest
