@@ -3,7 +3,6 @@
     path: /mnt/asgard
     state: directory
     mode: "777"
-    group: nobody:nogroup
 
 - name: "Remove ownership of nfs mount point"
   shell:
