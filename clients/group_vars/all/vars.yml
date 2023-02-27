@@ -12,9 +12,4 @@ avahiPackages:
   - avahi-daemon
 
 nfsPackages:
-  - nfs-kernel-server
-
-dnsmasqPackages:
-  - dnsmasq
-  - dnsutils
-  - ldnsutils
+  - nfs-common

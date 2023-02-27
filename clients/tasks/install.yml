@@ -12,8 +12,3 @@
   apt:
     name: "{{ nfsPackages }}"
     state: latest
-
-- name: Install dnsmasq
-  apt:
-    name: "{{ dnsmasqPackages }}"
-    state: latest
