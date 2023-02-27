@@ -4,3 +4,6 @@
     state: directory
     mode: "777"
     group: nobody:nogroup
+  shell:
+    executable: /bin/bash
+    cmd: "sudo chown nobody:nogroup /mnt/asgard"
