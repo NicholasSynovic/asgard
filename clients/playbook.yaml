@@ -1,89 +1,11 @@
 ---
-  - name: "Configure Ubuntu (SUDO)"
+  - name: "Configure Asgard client node"
     hosts: [localhost]
     connection: local
+    become: yes
 
     tasks:
-    - name: "Create NFS Mount points"
-      file:
-        path: "{{ item }}"
-        state: directory
-      loop:
-        - /mnt/asgard
-        - /mnt/asgard_client
-
-    - name: "Update APT Cache"
-      apt:
-        update_cache: yes
-        autoclean: true
-
-    - name: "Upgrade Packages"
-      apt:
-        upgrade: safe
-        autoremove: true
-        purge: true
-
-    - name: "Upgrade System Packages"
-      apt:
-        upgrade: full
-        autoremove: true
-        purge: true
-
-    - name: "Upgrade Distribution"
-      apt:
-        upgrade: dist
-        autoremove: true
-        purge: true
-
-    - name: "Update APT Cache"
-      apt:
-        update_cache: yes
-        autoclean: true
-
-    - name: "Install Utilities"
-      apt:
-        name: ["unzip", "curl", "zip", "software-properties-common", "build-essential", "procps", "file", "git"]
-
-    - name: "Install avahi"
-      apt:
-        name: ["avahi-daemon"]
-
-    - name: "Install NFS"
-      apt:
-        name: ["nfs-common"]
-
-    - name: "Install cpython Dependencies"
-      apt:
-        name: ["gdb", "lcov", "pkg-config", "libbz2-dev", "libffi-dev", "libgdbm-dev", "libgdbm-compat-dev", "liblzma-dev", "libbz2-dev", "libffi-dev", "libgdbm-dev", "libgdbm-compat-dev", "liblzma-dev", "libncurses5-dev", "libreadline6-dev", "libsqlite3-dev", "libssl-dev", "lzma", "lzma-dev", "tk-dev", "uuid-dev", "zlib1g-dev"]
-
-    - name: "Install python3 tooling"
-      apt:
-        name: ["python3-pip", "python3-venv"]
-
-    - name: "Enable avahi-daemon"
-      service:
-        name: avahi-daemon
-        state: started
-
-    #NEW as of 2/17
-    #confused on if this has already been implemented at the top of the file
-
-    - name: "NFS client env variable setup"
-      environment:
-        serverIP: $1
-        serverFolderPath: /mnt/asgard
-        clientFolderPath: /mnt/asgard_client
-      register: serverinfo
-
-    - debug:
-        var: serverinfo.stdout
-
-    - name: "NFS server connect at mount points"
-      shell:
-        executable: /bin/bash
-        cmd: "tee -a \"${serverIP}:${serverFolderPath}  ${clientFolderPath}     nfs     auto    0 0\" /etc/fstab"
-
-    - name: "NFS mount"
-      shell: 
-        executable: /bin/bash
-        cmd: "sudo mount -a"
+      - import_tasks: tasks/update.yml
+      - import_tasks: tasks/install.yml
+      - import_tasks: tasks/services.yml
+      - import_tasks: tasks/filesystem.yml

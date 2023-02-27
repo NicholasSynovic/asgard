@@ -15,4 +15,4 @@ sudo apt --fix-broken install -y
 
 ansible-galaxy collection install community.general
 
-ansible-playbook -K -i inventory.ini playbook.yml
+ansible-playbook -i inventory.ini playbook.yml

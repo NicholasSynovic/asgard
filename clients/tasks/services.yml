@@ -1,33 +1,6 @@
-- name: "Set ufw outside connection"
-  ufw:
-    rule: limit
-    proto: tcp
-    port: ssh
-    state: reloaded
-
-- name: "Set ufw subnet connection"
-  ufw:
-    from_ip: 192.168.102.0/24
-    rule: allow
-    state: reloaded
-
-- name: "Disable systemd-resolved"
+- name: "Start avahi"
   systemd:
-    name: systemd-resolved
-    enabled: false
-    force: true
-    state: stopped
-
-- name: "Start dnsmasq"
-  systemd:
-    name: dnsmasq
-    enabled: true
-    force: true
-    state: restarted
-
-- name: "Start nfs"
-  systemd:
-    name: nfs-kernel-server
+    name: avahi-daemon
     enabled: true
     force: true
     state: restarted
