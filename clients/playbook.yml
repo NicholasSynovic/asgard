@@ -4,8 +4,15 @@
     connection: local
     become: yes
 
+    vars_prompt:
+    - name: hostname
+      prompt: What is the hostname of the device?
+      private: false
+
+
     tasks:
       - import_tasks: tasks/update.yml
       - import_tasks: tasks/install.yml
+      - import_tasks: tasks/hostname.yml
       - import_tasks: tasks/services.yml
       - import_tasks: tasks/filesystem.yml
