@@ -7,6 +7,7 @@ utilityPackages:
   - procps
   - file
   - git
+  - python3-pip
 
 avahiPackages:
   - avahi-daemon
