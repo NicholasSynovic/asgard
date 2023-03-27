@@ -13,3 +13,8 @@
     dump: "0"
     opts: auto
     state: present
+
+- name: "Set OPENBLAS_CORETYPE=ARMV8"
+  lineinfile:
+    dest: ~/.bashrc
+    line: "export OPENBLAS_CORETYPE=ARMV8"

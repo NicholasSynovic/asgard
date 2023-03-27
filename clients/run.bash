@@ -20,3 +20,5 @@ python3 -m pip -r requirements.txt
 ansible-galaxy collection install community.general
 
 ansible-playbook -i inventory.ini playbook.yml
+
+source ~/.bashrc
