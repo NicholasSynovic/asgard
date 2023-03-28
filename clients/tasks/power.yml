@@ -1,0 +1,3 @@
+- name: "Set power state of devices"
+  shell:
+    cmd: sudo nvpmodel -m 1

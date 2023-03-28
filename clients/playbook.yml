@@ -16,3 +16,7 @@
       - import_tasks: tasks/hostname.yml
       - import_tasks: tasks/services.yml
       - import_tasks: tasks/filesystem.yml
+      - import_tasks: tasks/power.yml
+
+  - name: "Reboot device"
+    reboot:
